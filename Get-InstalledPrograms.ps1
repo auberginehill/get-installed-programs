@@ -267,7 +267,7 @@ described what is not included in Get-InstalledPrograms. The
 "Get-WmiObject -Class Win32_Product" query method was discarded mainly due to the 
 excessive long running times.
 
-On a sidenote, as described in "Code snippet 2", if it is relevant to find out, 
+On the other hand, as described in "Code snippet 2", if it is relevant to find out, 
 weather a particular version of a known program is installed or not, the here unused 
 function Check-InstalledSoftware could be called to action (the code is taken from 
 https://github.com/auberginehill/update-adobe-flash-player and is quite quick):
