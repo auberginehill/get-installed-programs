@@ -275,8 +275,7 @@
         <td style="padding:6px">Tobias Weltner: <a href="http://powershell.com/cs/PowerTips_Monthly_Volume_8.pdf#IDERA-1702_PS-PowerShellMonthlyTipsVol8-jan2014">PowerTips Monthly vol 8 January 2014</a> (or one of the <a href="https://web.archive.org/web/20150110213108/http://powershell.com/cs/media/p/30542.aspx">archive.org versions</a>)</td>
     </tr>
     <tr>
-        <td style="padding:6px">chocolatey:</td>                
-        <td style="padding:6px"><a href="https://chocolatey.org/packages/flashplayerplugin">Flash Player Plugin</a></td>  
+        <td style="padding:6px">chocolatey: <a href="https://chocolatey.org/packages/flashplayerplugin">Flash Player Plugin</a></td>  
     </tr>
     <tr>
         <td style="padding:6px"><a href="https://www.credera.com/blog/technology-insights/perfect-progress-bars-for-powershell/">Perfect Progress Bars for PowerShell</a></td>
