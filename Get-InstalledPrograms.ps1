@@ -250,8 +250,8 @@ Retrieves the programs installed on a local machine.
 .DESCRIPTION
 Get-InstalledPrograms queries the Windows registry for installed programs. The keys from
 HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ and
-HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\ are read on 64 bit computers
-and on the 32 bit computers only the latter path is accessed. Basic program related
+HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\ are read on 64-bit computers
+and on the 32-bit computers only the latter path is accessed. Basic program related
 properties, such as Name, Version, Install Date, Publisher, Comments, Contact, Icon,
 Estimated Size, Help Link, Install Location, Install Source, Language, Modify Path,
 NoModify, NoRepair, Partner Code, PSChildName, PSDrive, PSProvider, Uninstall String,
