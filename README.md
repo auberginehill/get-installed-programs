@@ -32,7 +32,7 @@
       <br />
       <br />The enumeration of installed programs in a Windows machine may take some time - therefore a progress bar is included in Get-InstalledPrograms for monitoring the steps taken. Also, after the Get-InstalledPrograms is finished, a rudimentary summary about the performance of the machine is shown. Similarly, in "Code snippet 1" is described what is not included in Get-InstalledPrograms. The "<code>Get-WmiObject -Class Win32_Product</code>" query method was discarded mainly due to the excessive long running times.
       <br />
-      <br />On a sidenote, as described in "Code snippet 2", if it is relevant to find out, weather a particular version of a known program is installed or not, the here unused function Check-InstalledSoftware could be called to action (the code is taken from <a href="https://github.com/auberginehill/update-adobe-flash-player">https://github.com/auberginehill/update-adobe-flash-player</a>" and is quite quick):
+      <br />On the other hand, as described in "Code snippet 2", if it is relevant to find out, weather a particular version of a known program is installed or not, the here unused function Check-InstalledSoftware could be called to action (the code is taken from <a href="https://github.com/auberginehill/update-adobe-flash-player">https://github.com/auberginehill/update-adobe-flash-player</a>" and is quite quick):
       <br />
       <br /><code>Check-InstalledSoftware "Adobe Flash Player 23 NPAPI" 23.0.0.162</code>
       <br />
