@@ -1,4 +1,6 @@
 <!-- Visual Studio Code: For a more comfortable reading experience, use the key combination Ctrl + Shift + V 
+     Visual Studio Code: To crop the tailing end space characters out, please use the key combination Ctrl + Shift + X
+     Visual Studio Code: To improve the formatting of HTML code, press Shift + Alt + F and the selected area will be reformatted in a html file.
 
 
    _____      _        _____           _        _ _          _ _____                                         
@@ -296,8 +298,11 @@
         <td style="padding:6px"><a href="https://github.com/auberginehill/get-battery-info">Get-BatteryInfo</a></td>
     </tr>
     <tr>
-        <th rowspan="6"></th>
+        <th rowspan="7"></th>
         <td style="padding:6px"><a href="https://github.com/auberginehill/get-computer-info">Get-ComputerInfo</a></td>    
+    </tr>
+    <tr>
+        <td style="padding:6px"><a href="https://github.com/auberginehill/get-directory-size">Get-DirectorySize</a></td>
     </tr>
     <tr>
         <td style="padding:6px"><a href="https://github.com/auberginehill/get-installed-windows-updates">Get-InstalledWindowsUpdates</a></td>  
