@@ -304,8 +304,8 @@ not happen, since not every program writes the uninstallation information to the
 registry. The unused WMI query Get-WmiObject -Class Win32_InstalledWin32Program
 seems not to detect every installed program either, and even listing all the
 shortcuts found on a computer omits those programs, which don't have a shortcut,
-so increasing the detect rate of the installed programs is clearly a prominent area
-for further development in Get-InstalledPrograms.
+so increasing the detect rate of the hard-to-detect installed programs is clearly 
+a prominent area for further development in Get-InstalledPrograms.
 
 The notoriously slow and possibly harmful Get-WmiObject -Class Win32_Product command
 is deliberately not used for listing the installed programs in Get-InstalledPrograms,
