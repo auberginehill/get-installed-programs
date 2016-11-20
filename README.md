@@ -152,7 +152,7 @@
         <th>:warning:</th>
         <td style="padding:6px">
             <ul>
-                <li>Despite Get-InstalledPrograms makes valid eforts to detect the installed programs on a local machine, achieving a 100 % detect rate of the installed programs might not happen, since not every program writes the uninstallation information to the registry. The unused WMI query <code>Get-WmiObject -Class Win32_InstalledWin32Program</code> seems not to detect every installed program either, and even listing all the shortcuts found on a computer omits those programs, which don't have a shortcut, so increasing the detect rate of the installed programs is clearly a prominent area for further development in Get-InstalledPrograms.</li>
+                <li>Despite Get-InstalledPrograms makes valid eforts to detect the installed programs on a local machine, achieving a 100 % detect rate of the installed programs might not happen, since not every program writes the uninstallation information to the registry. The unused WMI query <code>Get-WmiObject -Class Win32_InstalledWin32Program</code> seems not to detect every installed program either, and even listing all the shortcuts found on a computer omits those programs, which don't have a shortcut, so increasing the detect rate of the hard-to-detect installed programs is clearly a prominent area for further development in Get-InstalledPrograms.</li>
             </ul>
         </td>
     </tr>
