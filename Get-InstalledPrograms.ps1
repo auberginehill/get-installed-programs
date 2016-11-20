@@ -10,7 +10,7 @@ $start_time = Get-Date
 $empty_line = ""
 
 
-# Function to check weather a program is installed or not                                     # Credit: chocolatey: "Flash Player Plugin"
+# Function to check whether a program is installed or not                                     # Credit: chocolatey: "Flash Player Plugin"
 Function Check-InstalledSoftware ($display_name, $display_version) {
     $registry_paths = @(
         'HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*',
@@ -20,6 +20,11 @@ Function Check-InstalledSoftware ($display_name, $display_version) {
 } # function
 
 
+# Perhaps collect the results to an ArrayList, so that instead the copying the entire array into a new array in each addition (as in normal arrays), 
+# just add the latest data to the bottom with .Add(the_data_to_be_added_at_the_bottom) method. .Insert(0,'added at the beginning') inserts to the first positition. 
+# $result_list = @()
+# [System.Collections.ArrayList]$results = $result_list
+# $null = $results.Add($folder_properties)
 $obj_installed_programs = @()
 
 
@@ -76,7 +81,7 @@ If ([IntPtr]::Size -eq 8) {
 
             $downloading_plugin_is_required = $false
             If ($plugin_is_installed -eq $true) {
-                $most_recent_plugin_major_version = ([version]$xml_plugin_win_current).Major 
+                $most_recent_plugin_major_version = ([version]$xml_plugin_win_current).Major
                 $most_recent_plugin_already_exists = Check-InstalledSoftware "Adobe Flash Player $most_recent_plugin_major_version NPAPI" $xml_plugin_win_current
                 If ($most_recent_plugin_already_exists) {
                     Write-Output "Currently (until the next Flash Player version is released) Adobe Flash Player for Firefox (NPAPI) v$plugin_baseline doesn't need any further maintenance or care."
@@ -144,10 +149,7 @@ ForEach ($program in $programs) {
                     'Windows Installer'     = $program.WindowsInstaller
                 } # New-Object
 
-
             $obj_installed_programs.PSObject.TypeNames.Insert(0,"Installed Programs")
-            $obj_installed_programs_selection_all = $obj_installed_programs | Sort 'Name' | Select-Object 'Name','Version','Install Date','Publisher','Comments','Contact','Icon','Estimated Size','Help Link','Install Location','Install Source','Language','Modify Path','NoModify','NoRepair','Partner Code','PSChildName','PSDrive','PSProvider','Uninstall String','URL Info (About)','URL Update Info','Version (Real)','Version Major','Version Minor','Windows Installer'
-            $obj_installed_programs_selection = $obj_installed_programs | Select-Object 'Name','Version','Install Date','Publisher' | Sort 'Name'
 
 } # foreach ($program)
 
@@ -159,6 +161,8 @@ Write-Progress -Id $id -Activity $activity -Status $status -CurrentOperation $ta
 
 
 # Display the installed programs in console
+$obj_installed_programs_selection_all = $obj_installed_programs | Sort 'Name' | Select-Object 'Name','Version','Install Date','Publisher','Comments','Contact','Icon','Estimated Size','Help Link','Install Location','Install Source','Language','Modify Path','NoModify','NoRepair','Partner Code','PSChildName','PSDrive','PSProvider','Uninstall String','URL Info (About)','URL Update Info','Version (Real)','Version Major','Version Minor','Windows Installer'
+$obj_installed_programs_selection = $obj_installed_programs | Select-Object 'Name','Version','Install Date','Publisher' | Sort 'Name'
 $stats_text = "Found $($programs.count) programs."
 Write-Output $stats_text
 $empty_line | Out-String
@@ -196,12 +200,12 @@ $runtime = ($end_time) - ($start_time)
         $runtime_result = [string]''
     } # else (if)
 
-        If ($runtime_result.Contains("0 h")) {
-            $runtime_result = $runtime_result.Replace("0 h","")
-            } If ($runtime_result.Contains("0 min")) {
-                $runtime_result = $runtime_result.Replace("0 min","")
-                } If ($runtime_result.Contains("0 sec")) {
-                $runtime_result = $runtime_result.Replace("0 sec","")
+        If ($runtime_result.Contains(" 0 h")) {
+            $runtime_result = $runtime_result.Replace(" 0 h"," ")
+            } If ($runtime_result.Contains(" 0 min")) {
+                $runtime_result = $runtime_result.Replace(" 0 min"," ")
+                } If ($runtime_result.Contains(" 0 sec")) {
+                $runtime_result = $runtime_result.Replace(" 0 sec"," ")
         } # if ($runtime_result: first)
 
 # Display the runtime in console
@@ -259,22 +263,23 @@ URL Info (About), URL Update Info, Version (Real), Version Major, Version Minor 
 Windows Installer are displayed in console, written to a CSV-file and displayed in a
 pop-up window (Out-Gridview).
 
-The enumeration of installed programs in a Windows machine may take some time 
-- therefore a progress bar is included in Get-InstalledPrograms for monitoring the 
-steps taken. Also, after the Get-InstalledPrograms is finished, a rudimentary summary 
-about the performance of the machine is shown. Similarly, in "Code snippet 1" is 
-described what is not included in Get-InstalledPrograms. The 
-"Get-WmiObject -Class Win32_Product" query method was discarded mainly due to the 
-excessive long running times.
+The enumeration of installed programs in a Windows machine may take some time
+- therefore a progress bar is included in Get-InstalledPrograms for monitoring the
+steps taken. Also, after the Get-InstalledPrograms is finished, a rudimentary summary
+about the performance of the machine is shown. Similarly, in "Code snippet 1" is
+described what is not included in Get-InstalledPrograms. The
+"Get-WmiObject -Class Win32_Product" query method was discarded mainly due to the
+excessive long running times. Please see the Notes section below for further debate
+on the notorious Win32_Product Class.
 
-On the other hand, as described in "Code snippet 2", if it is relevant to find out, 
-weather a particular version of a known program is installed or not, the here unused 
-function Check-InstalledSoftware could be called to action (the code is taken from 
+On the other hand, as described in "Code snippet 2", if it is relevant to find out,
+whether a particular version of a known program is installed or not, the here unused
+function Check-InstalledSoftware could be called to action (the code is taken from
 https://github.com/auberginehill/update-adobe-flash-player and is quite quick):
 
     Check-InstalledSoftware "Adobe Flash Player 23 NPAPI" 23.0.0.162
 
-will return all the aforementioned info on the queried program, if it is installed, 
+will return all the aforementioned info on the queried program, if it is installed,
 but returs a null value, if such a program doesn't exist on the machine.
 
 .OUTPUTS
@@ -293,10 +298,29 @@ And also one CSV-file at $path
 $env:temp\installed_programs.csv            : CSV-file      : installed_programs.csv
 
 .NOTES
+Despite Get-InstalledPrograms makes valid eforts to detect the installed programs
+on a local machine, achieving a 100 % detect rate of the installed programs might
+not happen, since not every program writes the uninstallation information to the
+registry. The unused WMI query Get-WmiObject -Class Win32_InstalledWin32Program
+seems not to detect every installed program either, and even listing all the
+shortcuts found on a computer omits those programs, which don't have a shortcut,
+so increasing the detect rate of the installed programs is clearly a prominent area
+for further development in Get-InstalledPrograms.
+
+The notoriously slow and possibly harmful Get-WmiObject -Class Win32_Product command
+is deliberately not used for listing the installed programs in Get-InstalledPrograms,
+since the Win32_Product Class has some unpleasant behaviors - namely it uses a
+provider DLL that validates the consistency of every installed MSI package on the
+computer (msiprov.dll with the mandatorily initiated resiliency check, in which the
+installations are verified and possibly also repaired or repair-installed), which
+is the main reason behind the slow performance of Win32_Product Class. All in all
+Win32_product Class is not query optimized and in Get-InstalledPrograms, for now,
+a combination of various registry queries is used instead.
+
 Please note that the CSV-file is created in a directory, which is specified with the
 $path variable (at line 6). The $env:temp variable points to the current temp folder.
 The default value of the $env:temp variable is C:\Users\<username>\AppData\Local\Temp
-(i.e. each user account has their own separate temp folder at path 
+(i.e. each user account has their own separate temp folder at path
 %USERPROFILE%\AppData\Local\Temp). To see the current temp path, for instance a command
 
     [System.IO.Path]::GetTempPath()
@@ -306,7 +330,8 @@ to C:\Temp, please, for example, follow the instructions at
 http://www.eightforums.com/tutorials/23500-temporary-files-folder-change-location-windows.html
 
     Homepage:           https://github.com/auberginehill/get-installed-programs
-    Version:            1.0
+    Short URL:          http://tinyurl.com/j7a4eky
+    Version:            1.1
 
 .EXAMPLE
 ./Get-InstalledPrograms
