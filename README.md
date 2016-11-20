@@ -1,15 +1,17 @@
-<!-- Visual Studio Code: For a more comfortable reading experience, use the key combination Ctrl + Shift + V 
-     Visual Studio Code: To crop the tailing end space characters out, please use the key combination Ctrl + Shift + X
+<!-- Visual Studio Code: For a more comfortable reading experience, use the key combination Ctrl + Shift + V
+     Visual Studio Code: To crop the tailing end space characters out, please use the key combination Ctrl + A Ctrl + K Ctrl + X (Formerly Ctrl + Shift + X)
      Visual Studio Code: To improve the formatting of HTML code, press Shift + Alt + F and the selected area will be reformatted in a html file.
+     Visual Studio Code shortcuts: http://code.visualstudio.com/docs/customization/keybindings (or https://aka.ms/vscodekeybindings)
+     Visual Studio Code shortcut PDF (Windows): https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf
 
 
-   _____      _        _____           _        _ _          _ _____                                         
-  / ____|    | |      |_   _|         | |      | | |        | |  __ \                                        
- | |  __  ___| |_ ______| |  _ __  ___| |_ __ _| | | ___  __| | |__) | __ ___   __ _ _ __ __ _ _ __ ___  ___ 
+   _____      _        _____           _        _ _          _ _____
+  / ____|    | |      |_   _|         | |      | | |        | |  __ \
+ | |  __  ___| |_ ______| |  _ __  ___| |_ __ _| | | ___  __| | |__) | __ ___   __ _ _ __ __ _ _ __ ___  ___
  | | |_ |/ _ \ __|______| | | '_ \/ __| __/ _` | | |/ _ \/ _` |  ___/ '__/ _ \ / _` | '__/ _` | '_ ` _ \/ __|
  | |__| |  __/ |_      _| |_| | | \__ \ || (_| | | |  __/ (_| | |   | | | (_) | (_| | | | (_| | | | | | \__ \
   \_____|\___|\__|    |_____|_| |_|___/\__\__,_|_|_|\___|\__,_|_|   |_|  \___/ \__, |_|  \__,_|_| |_| |_|___/
-                                                                                __/ |                        
+                                                                                __/ |
                                                                                |___/                               -->
 
 
@@ -32,9 +34,9 @@
       <td style="padding:6px"><strong>Description:</strong></td>
       <td style="padding:6px">Get-InstalledPrograms queries the Windows registry for installed programs. The keys from <code>HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\</code> and <code>HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\</code> are read on 64-bit computers and on the 32-bit computers only the latter path is accessed. Basic program related properties, such as Name, Version, Install Date, Publisher, Comments, Contact, Icon, Estimated Size, Help Link, Install Location, Install Source, Language, Modify Path, NoModify, NoRepair, Partner Code, PSChildName, PSDrive, PSProvider, Uninstall String, URL Info (About), URL Update Info, Version (Real), Version Major, Version Minor and Windows Installer are displayed in console, written to a CSV-file and displayed in a pop-up window (Out-Gridview).
       <br />
-      <br />The enumeration of installed programs in a Windows machine may take some time - therefore a progress bar is included in Get-InstalledPrograms for monitoring the steps taken. Also, after the Get-InstalledPrograms is finished, a rudimentary summary about the performance of the machine is shown. Similarly, in "Code snippet 1" is described what is not included in Get-InstalledPrograms. The "<code>Get-WmiObject -Class Win32_Product</code>" query method was discarded mainly due to the excessive long running times.
+      <br />The enumeration of installed programs in a Windows machine may take some time - therefore a progress bar is included in Get-InstalledPrograms for monitoring the steps taken. Also, after the Get-InstalledPrograms is finished, a rudimentary summary about the performance of the machine is shown. Similarly, in "Code snippet 1" is described what is not included in Get-InstalledPrograms. The "<code>Get-WmiObject -Class Win32_Product</code>" query method was discarded mainly due to the excessive long running times. Please see the Notes section below for further debate on the notorious <code>Win32_Product</code> Class.
       <br />
-      <br />On the other hand, as described in "Code snippet 2", if it is relevant to find out, weather a particular version of a known program is installed or not, the here unused function Check-InstalledSoftware could be called to action (the code is taken from <a href="https://github.com/auberginehill/update-adobe-flash-player">https://github.com/auberginehill/update-adobe-flash-player</a>" and is quite quick):
+      <br />On the other hand, as described in "Code snippet 2", if it is relevant to find out, whether a particular version of a known program is installed or not, the here unused function Check-InstalledSoftware could be called to action (the code is taken from <a href="https://github.com/auberginehill/update-adobe-flash-player">https://github.com/auberginehill/update-adobe-flash-player</a>" and is quite quick):
       <br />
       <br /><code>Check-InstalledSoftware "Adobe Flash Player 23 NPAPI" 23.0.0.162</code>
       <br />
@@ -42,11 +44,12 @@
    </tr>
    <tr>
       <td style="padding:6px"><strong>Homepage:</strong></td>
-      <td style="padding:6px"><a href="https://github.com/auberginehill/get-installed-programs">https://github.com/auberginehill/get-installed-programs</a></td>
+      <td style="padding:6px"><a href="https://github.com/auberginehill/get-installed-programs">https://github.com/auberginehill/get-installed-programs</a>
+      <br />Short URL: <a href="http://tinyurl.com/j7a4eky">http://tinyurl.com/j7a4eky</a></td>
    </tr>
    <tr>
       <td style="padding:6px"><strong>Version:</strong></td>
-      <td style="padding:6px">1.0</td>
+      <td style="padding:6px">1.1</td>
    </tr>
    <tr>
         <td style="padding:6px"><strong>Sources:</strong></td>
@@ -54,23 +57,23 @@
             <table>
                 <tr>
                     <td style="padding:6px">Emojis:</td>
-                    <td style="padding:6px"><a href="https://api.github.com/emojis">https://api.github.com/emojis</a></td>
-                </tr>                    
-                <tr>
-                    <td style="padding:6px">Tobias Weltner:</td>                
-                    <td style="padding:6px"><a href="http://powershell.com/cs/PowerTips_Monthly_Volume_8.pdf#IDERA-1702_PS-PowerShellMonthlyTipsVol8-jan2014">PowerTips Monthly vol 8 January 2014</a> (or one of the <a href="https://web.archive.org/web/20150110213108/http://powershell.com/cs/media/p/30542.aspx">archive.org versions</a>)</td>                
+                    <td style="padding:6px"><a href="https://github.com/auberginehill/emoji-table">Emoji Table</a></td>
                 </tr>
                 <tr>
-                    <td style="padding:6px">chocolatey:</td>                
-                    <td style="padding:6px"><a href="https://chocolatey.org/packages/flashplayerplugin">Flash Player Plugin</a></td>  
+                    <td style="padding:6px">Tobias Weltner:</td>
+                    <td style="padding:6px"><a href="http://powershell.com/cs/PowerTips_Monthly_Volume_8.pdf#IDERA-1702_PS-PowerShellMonthlyTipsVol8-jan2014">PowerTips Monthly vol 8 January 2014</a> (or one of the <a href="https://web.archive.org/web/20150110213108/http://powershell.com/cs/media/p/30542.aspx">archive.org versions</a>)</td>
+                </tr>
+                <tr>
+                    <td style="padding:6px">chocolatey:</td>
+                    <td style="padding:6px"><a href="https://chocolatey.org/packages/flashplayerplugin">Flash Player Plugin</a></td>
                 </tr>
             </table>
         </td>
-   </tr> 
+   </tr>
    <tr>
       <td style="padding:6px"><strong>Downloads:</strong></td>
       <td style="padding:6px">For instance <a href="https://raw.githubusercontent.com/auberginehill/get-installed-programs/master/Get-InstalledPrograms.ps1">Get-InstalledPrograms.ps1</a>. Or <a href="https://github.com/auberginehill/get-installed-programs/archive/master.zip">everything as a .zip-file</a>.</td>
-   </tr> 
+   </tr>
 </table>
 
 
@@ -124,12 +127,12 @@
                             <tr>
                                 <td style="padding:6px"><strong>Path</strong></td>
                                 <td style="padding:6px"><strong>Type</strong></td>
-                                <td style="padding:6px"><strong>Name</strong></td>                                
+                                <td style="padding:6px"><strong>Name</strong></td>
                             </tr>
                             <tr>
                                 <td style="padding:6px"><code>$env:temp\installed_programs.csv</code></td>
                                 <td style="padding:6px">CSV-file</td>
-                                <td style="padding:6px"><code>installed_programs.csv</code></td>                                
+                                <td style="padding:6px"><code>installed_programs.csv</code></td>
                             </tr>
                         </table>
                     </p>
@@ -149,7 +152,7 @@
         <th>:warning:</th>
         <td style="padding:6px">
             <ul>
-                <li>Please note that the CSV-file is created in a directory, which is specified with the <code>$path</code> variable (at line 6).</li>
+                <li>Despite Get-InstalledPrograms makes valid eforts to detect the installed programs on a local machine, achieving a 100 % detect rate of the installed programs might not happen, since not every program writes the uninstallation information to the registry. The unused WMI query <code>Get-WmiObject -Class Win32_InstalledWin32Program</code> seems not to detect every installed program either, and even listing all the shortcuts found on a computer omits those programs, which don't have a shortcut, so increasing the detect rate of the installed programs is clearly a prominent area for further development in Get-InstalledPrograms.</li>
             </ul>
         </td>
     </tr>
@@ -158,7 +161,10 @@
         <td style="padding:6px">
             <ul>
                 <p>
-                    <li>The <code>$env:temp</code> variable points to the current temp folder. The default value of the <code>$env:temp</code> variable is <code>C:\Users\&lt;username&gt;\AppData\Local\Temp</code> (i.e. each user account has their own separate temp folder at path <code>%USERPROFILE%\AppData\Local\Temp</code>). To see the current temp path, for instance a command
+                    <li>The notoriously slow and possibly harmful <code>Get-WmiObject -Class Win32_Product</code> command is deliberately not used for listing the installed programs in Get-InstalledPrograms, since the <code>Win32_Product</code> Class has some unpleasant behaviors – namely it uses a provider DLL that validates the consistency of every installed MSI package on the computer (<code>msiprov.dll</code> with the mandatorily initiated resiliency check, in which the installations are verified and possibly also repaired or repair-installed), which is the main reason behind <a href="https://sdmsoftware.com/group-policy-blog/wmi/why-win32_product-is-bad-news/">the</a> <a href="https://blogs.technet.microsoft.com/askds/2012/04/19/how-to-not-use-win32_product-in-group-policy-filtering/">slow</a> <a href="https://support.microsoft.com/en-us/kb/974524">performance</a> of <code>Win32_Product</code> Class. All in all <code>Win32_product</code> Class is not query optimized and in Get-InstalledPrograms, for now, a combination of various registry queries is used instead.</li>
+                </p>
+                <p>
+                    <li>Please note that the CSV-file is created in a directory, which is specified with the <code>$path</code> variable (at line 6). The <code>$env:temp</code> variable points to the current temp folder. The default value of the <code>$env:temp</code> variable is <code>C:\Users\&lt;username&gt;\AppData\Local\Temp</code> (i.e. each user account has their own separate temp folder at path <code>%USERPROFILE%\AppData\Local\Temp</code>). To see the current temp path, for instance a command
                     <br />
                     <br /><code>[System.IO.Path]::GetTempPath()</code>
                     <br />
@@ -237,7 +243,7 @@
                 </p>
                 <p>
                     <li><code>New-Item -ItemType File -Path C:\Temp\Get-InstalledPrograms.ps1</code><br />
-                    Creates an empty ps1-file to the <code>C:\Temp</code> directory. The <code>New-Item</code> cmdlet has an inherent <code>-NoClobber</code> mode built into it, so that the procedure will halt, if overwriting (replacing the contents) of an existing file is about to happen. Overwriting a file with the <code>New-Item</code> cmdlet requires using the <code>Force</code>.<br /> 
+                    Creates an empty ps1-file to the <code>C:\Temp</code> directory. The <code>New-Item</code> cmdlet has an inherent <code>-NoClobber</code> mode built into it, so that the procedure will halt, if overwriting (replacing the contents) of an existing file is about to happen. Overwriting a file with the <code>New-Item</code> cmdlet requires using the <code>Force</code>.<br />
                     For more information, please type "<code>help New-Item -Full</code>".</li>
                 </p>
             </ol>
@@ -257,17 +263,17 @@
       <th><img class="emoji" title="contributing" alt="contributing" height="28" width="28" align="absmiddle" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f33f.png"></th>
       <td style="padding:6px"><strong>Bugs:</strong></td>
       <td style="padding:6px"><a href="https://github.com/auberginehill/get-installed-programs/issues">Submit bugs</a> and help us verify fixes.</td>
-   </tr> 
+   </tr>
    <tr>
       <th rowspan="2"></th>
       <td style="padding:6px"><strong>Feature Requests:</strong></td>
       <td style="padding:6px">Feature request can be submitted by <a href="https://github.com/auberginehill/get-installed-programs/issues">creating an Issue</a>.</td>
-   </tr> 
+   </tr>
    <tr>
       <td style="padding:6px"><strong>Edit Source Files:</strong></td>
       <td style="padding:6px"><a href="https://github.com/auberginehill/get-installed-programs/pulls">Submit pull requests</a> for bug fixes and features and discuss existing proposals.</td>
    </tr>
- </table>   
+ </table>
 
 
 
@@ -284,7 +290,7 @@
         <td style="padding:6px">Tobias Weltner: <a href="http://powershell.com/cs/PowerTips_Monthly_Volume_8.pdf#IDERA-1702_PS-PowerShellMonthlyTipsVol8-jan2014">PowerTips Monthly vol 8 January 2014</a> (or one of the <a href="https://web.archive.org/web/20150110213108/http://powershell.com/cs/media/p/30542.aspx">archive.org versions</a>)</td>
     </tr>
     <tr>
-        <td style="padding:6px">chocolatey: <a href="https://chocolatey.org/packages/flashplayerplugin">Flash Player Plugin</a></td>  
+        <td style="padding:6px">chocolatey: <a href="https://chocolatey.org/packages/flashplayerplugin">Flash Player Plugin</a></td>
     </tr>
     <tr>
         <td style="padding:6px"><a href="https://www.credera.com/blog/technology-insights/perfect-progress-bars-for-powershell/">Perfect Progress Bars for PowerShell</a></td>
@@ -302,26 +308,47 @@
  <table>
     <tr>
         <th><img class="emoji" title="www" alt="www" height="28" width="28" align="absmiddle" src="https://assets-cdn.github.com/images/icons/emoji/unicode/0023-20e3.png"></th>
+        <td style="padding:6px"><a href="https://github.com/auberginehill/firefox-customization-files">Firefox Customization Files</a></td>
+    </tr>
+    <tr>
+        <th rowspan="14"></th>
+        <td style="padding:6px"><a href="https://github.com/auberginehill/get-ascii-table">Get-AsciiTable</a></td>
+    </tr>
+    <tr>
         <td style="padding:6px"><a href="https://github.com/auberginehill/get-battery-info">Get-BatteryInfo</a></td>
     </tr>
     <tr>
-        <th rowspan="7"></th>
-        <td style="padding:6px"><a href="https://github.com/auberginehill/get-computer-info">Get-ComputerInfo</a></td>    
+        <td style="padding:6px"><a href="https://github.com/auberginehill/get-computer-info">Get-ComputerInfo</a></td>
     </tr>
     <tr>
         <td style="padding:6px"><a href="https://github.com/auberginehill/get-directory-size">Get-DirectorySize</a></td>
     </tr>
     <tr>
-        <td style="padding:6px"><a href="https://github.com/auberginehill/get-installed-windows-updates">Get-InstalledWindowsUpdates</a></td>  
+        <td style="padding:6px"><a href="https://github.com/auberginehill/get-installed-windows-updates">Get-InstalledWindowsUpdates</a></td>
     </tr>
     <tr>
-        <td style="padding:6px"><a href="https://github.com/auberginehill/get-ram-info">Get-RAMInfo</a></td>  
+        <td style="padding:6px"><a href="https://github.com/auberginehill/get-ram-info">Get-RAMInfo</a></td>
     </tr>
     <tr>
-        <td style="padding:6px"><a href="https://gist.github.com/auberginehill/eb07d0c781c09ea868123bf519374ee8">Get-TimeDifference</a></td>  
+        <td style="padding:6px"><a href="https://gist.github.com/auberginehill/eb07d0c781c09ea868123bf519374ee8">Get-TimeDifference</a></td>
+    </tr>
+    <tr>
+        <td style="padding:6px"><a href="https://github.com/auberginehill/get-time-zone-table">Get-TimeZoneTable</a></td>
     </tr>
     <tr>
         <td style="padding:6px"><a href="https://github.com/auberginehill/get-unused-drive-letters">Get-UnusedDriveLetters</a></td>
+    </tr>
+    <tr>
+        <td style="padding:6px"><a href="https://github.com/auberginehill/emoji-table">Emoji Table</a></td>
+    </tr>
+    <tr>
+        <td style="padding:6px"><a href="https://github.com/auberginehill/java-update">Java-Update</a></td>
+    </tr>
+    <tr>
+        <td style="padding:6px"><a href="https://github.com/auberginehill/rock-paper-scissors">Rock-Paper-Scissors</a></td>
+    </tr>
+    <tr>
+        <td style="padding:6px"><a href="https://github.com/auberginehill/toss-a-coin">Toss-a-Coin</a></td>
     </tr>
     <tr>
         <td style="padding:6px"><a href="https://github.com/auberginehill/update-adobe-flash-player">Update-AdobeFlashPlayer</a></td>
