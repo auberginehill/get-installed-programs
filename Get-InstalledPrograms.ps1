@@ -339,7 +339,7 @@ https://github.com/auberginehill/update-adobe-flash-player and is quite quick):
     Check-InstalledSoftware "Adobe Flash Player 23 NPAPI" 23.0.0.162
 
 will return all the aforementioned info on the queried program, if it is installed,
-but returs a null value, if such a program doesn't exist on the machine.
+but returns a null value, if such a program doesn't exist on the machine.
 
 .OUTPUTS
 Displays general program related information in console. In addition to that...
