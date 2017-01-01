@@ -191,7 +191,7 @@
                                 <td rowspan="2" style="padding:6px"><strong>This PowerShell Version is also available on Windows Version(s)</strong></td>
                             </tr>
                             <tr>
-                                <td style="padding:6px"><strong>Version</strong></td>
+                                <td style="padding:6px"><strong>Version<sup>8</sup></strong></td>
                                 <th style="padding:6px">OSVersion<sup>2</sup></th>
                             </tr>
                             <tr>
@@ -337,7 +337,8 @@
                         <br /><sup>4</sup> Also integrated in all later Windows versions
                         <br /><sup>5</sup> Release date of public review
                         <br /><sup>6</sup> Platform ID = 0
-                        <br /><sup>7</sup> Platform ID = 1 (whereas on NT 3.51 and later the Platform ID ≥ 2)</p>
+                        <br /><sup>7</sup> Platform ID = 1 (whereas on NT 3.51 and later the Platform ID ≥ 2)
+                        <br /><sup>8</sup> <code>(Get-WmiObject -Class Win32_OperatingSystem).Caption</code></p>
                         <p>Sources: <a href="https://4sysops.com/archives/powershell-versions-and-their-windows-version/">PowerShell versions and their Windows version</a>, <a href="http://www.vb-helper.com/howto_net_os_version.html">Get operating system information in VB .NET</a> and <a href="https://social.msdn.microsoft.com/Forums/vstudio/en-US/5956c04f-072a-406c-ae6a-cc8b3a207936/systemenvironmentosversionversionmajor?forum=csharpgeneral">System.Environment.OSVersion.Version.Major</a></p>
                     </ol></li>
                 </p>
