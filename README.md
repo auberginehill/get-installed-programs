@@ -32,7 +32,7 @@
    </tr>
    <tr>
       <td style="padding:6px"><strong>Description:</strong></td>
-      <td style="padding:6px">Get-InstalledPrograms queries the Windows registry for installed programs. The keys from <code>HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\</code> and <code>HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\</code> are read on 64-bit computers and on the 32-bit computers only the latter path is accessed. Basic program related properties, such as Name, Version, Install Date, Publisher, Comments, Contact, Icon, Estimated Size, Help Link, Install Location, Install Source, Language, Modify Path, NoModify, NoRepair, Partner Code, PSChildName, PSDrive, PSProvider, Uninstall String, URL Info (About), URL Update Info, Version (Real), Version Major, Version Minor and Windows Installer are displayed in console, written to a CSV-file and displayed in a pop-up window (Out-Gridview).
+      <td style="padding:6px">Get-InstalledPrograms queries the Windows registry for installed programs. The keys from <code>HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\</code> and <code>HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\</code> are read on 64-bit computers and on the 32-bit computers only the latter path is accessed. Basic program related properties, such as Name, Version, Install Date, Publisher, Comments, Contact, Icon, Estimated Size, Help Link, Install Location, Install Source, Language, Modify Path, NoModify, NoRepair, Partner Code, PSChildName, PSDrive, PSProvider, Uninstall String, URL Info (About), URL Update Info, Version (Real), Version Major, Version Minor and Windows Installer are displayed in console, written to a CSV-file and displayed in a pop-up window (Out-Gridview); If Get-InstalledPrograms is run in an elevated PowerShell window, the Apps that are installed under other than the current user profile are detected, too.
       <br />
       <br />The enumeration of installed programs in a Windows machine may take some time - therefore a progress bar is included in Get-InstalledPrograms for monitoring the steps taken. Also, after the Get-InstalledPrograms is finished, a rudimentary summary about the performance of the machine is shown. Similarly, in "Code snippet 1" is described what is not included in Get-InstalledPrograms. The "<code>Get-WmiObject -Class Win32_Product</code>" query method was discarded mainly due to the excessive long running times. Please see the Notes section below for further debate on the notorious <code>Win32_Product</code> Class.
       <br />
@@ -49,7 +49,7 @@
    </tr>
    <tr>
       <td style="padding:6px"><strong>Version:</strong></td>
-      <td style="padding:6px">1.1</td>
+      <td style="padding:6px">1.2</td>
    </tr>
    <tr>
         <td style="padding:6px"><strong>Sources:</strong></td>
@@ -66,6 +66,14 @@
                 <tr>
                     <td style="padding:6px">chocolatey:</td>
                     <td style="padding:6px"><a href="https://chocolatey.org/packages/flashplayerplugin">Flash Player Plugin</a></td>
+                </tr>
+                <tr>
+                    <td style="padding:6px">alejandro5042:</td>
+                    <td style="padding:6px"><a href="http://stackoverflow.com/questions/29266622/how-to-run-exe-with-without-elevated-privileges-from-powershell?rq=1">How to run exe with/without elevated privileges from PowerShell</a></td>
+                </tr>
+                <tr>
+                    <td style="padding:6px">Michael Pietroforte:</td>
+                    <td style="padding:6px"><a href="https://4sysops.com/archives/powershell-versions-and-their-windows-version/">PowerShell versions and their Windows version</a></td>
                 </tr>
             </table>
         </td>
@@ -102,7 +110,7 @@
         <td style="padding:6px">
             <ul>
                 <p>
-                    <li>One pop-up window "$obj_installed_programs_selection_all" (Out-GridView):</li>
+                    <li>Two pop-up windows "<code>$obj_installed_programs_selection_all</code>" and "<code>$windows_store_apps</code>" (Out-GridView) on machines running Windows 8 / Windows Server 2012 or later. On machines with an earlier OS version only the former pop-up window is displayed. For determining the Operating System version, please see the Notes-section below.</li>
                 </p>
                 <ol>
                     <p>
@@ -112,14 +120,18 @@
                                 <td style="padding:6px"><strong>Description</strong></td>
                             </tr>
                             <tr>
-                                <td style="padding:6px">$obj_installed_programs_selection_all</a></td>
+                                <td style="padding:6px"><code>$obj_installed_programs_selection_all</code></td>
                                 <td style="padding:6px">Enumerates the found installed programs</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px"><code>$windows_store_apps</code></td>
+                                <td style="padding:6px">Inventory of some or all the Windows Store apps; If Get-InstalledPrograms is run in an elevated PowerShell window, the Apps that are installed under other than the current user profile are detected, too.</td>
                             </tr>
                         </table>
                     </p>
                 </ol>
                 <p>
-                    <li>And also one CSV-file at $path.</li>
+                    <li>And also two CSV-files at <code>$path</code> on machines running Windows 8 / Windows Server 2012 or later. On machines with an earlier OS version only the former file is written. For determining the Operating System version, please see the Notes-section below.</li>
                 </p>
                 <ol>
                     <p>
@@ -133,6 +145,11 @@
                                 <td style="padding:6px"><code>$env:temp\installed_programs.csv</code></td>
                                 <td style="padding:6px">CSV-file</td>
                                 <td style="padding:6px"><code>installed_programs.csv</code></td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px"><code>$env:temp\windows_store_apps.csv</code></td>
+                                <td style="padding:6px">CSV-file</td>
+                                <td style="padding:6px"><code>windows_store_apps.csv</code></td>
                             </tr>
                         </table>
                     </p>
@@ -162,6 +179,170 @@
             <ul>
                 <p>
                     <li>The notoriously slow and possibly harmful <code>Get-WmiObject -Class Win32_Product</code> command is deliberately not used for listing the installed programs in Get-InstalledPrograms, since the <code>Win32_Product</code> Class has some unpleasant behaviors – namely it uses a provider DLL that validates the consistency of every installed MSI package on the computer (<code>msiprov.dll</code> with the mandatorily initiated resiliency check, in which the installations are verified and possibly also repaired or repair-installed), which is the main reason behind <a href="https://sdmsoftware.com/group-policy-blog/wmi/why-win32_product-is-bad-news/">the</a> <a href="https://blogs.technet.microsoft.com/askds/2012/04/19/how-to-not-use-win32_product-in-group-policy-filtering/">slow</a> <a href="https://support.microsoft.com/en-us/kb/974524">performance</a> of <code>Win32_Product</code> Class. All in all <code>Win32_product</code> Class is not query optimized and in Get-InstalledPrograms, for now, a combination of various registry queries is used instead.</li>
+                </p>
+                <p>
+                    <li>PowerShell versions and their Windows versions:
+                    <ol>
+                        <table>
+                            <tr>
+                                <td rowspan="2" style="padding:6px"><strong>PowerShell version<sup>1</sup></strong></td>
+                                <td rowspan="2" style="padding:6px"><strong>Release Date</strong></td>
+                                <th colspan="2" style="padding:6px">Default on Windows</th>
+                                <td rowspan="2" style="padding:6px"><strong>This PowerShell Version is also available on Windows Version(s)</strong></td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px"><strong>Version</strong></td>
+                                <th style="padding:6px">OSVersion<sup>2</sup></th>
+                            </tr>
+                            <tr>
+                                <td rowspan="11"></td>
+                                <td rowspan="11"></td>
+                                <td style="padding:6px">Win3.1<sup>6</sup></td>
+                                <td style="padding:6px">?.?</td>
+                                <td rowspan="11"></td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px">Win95<sup>7</sup></td>
+                                <td style="padding:6px">4.0</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px">Win98<sup>7</sup></td>
+                                <td style="padding:6px">4.10</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px">WinME<sup>7</sup></td>
+                                <td style="padding:6px">4.90</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px">NT 3.51</td>
+                                <td style="padding:6px">3.51</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px">NT 4.0</td>
+                                <td style="padding:6px">4.0</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px">Win2000</td>
+                                <td style="padding:6px">5.0</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px">WinXP</td>
+                                <td style="padding:6px">5.1</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px">WinXP 64-bit</td>
+                                <td style="padding:6px">5.2</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px">Win2003</td>
+                                <td style="padding:6px">5.2</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px">Vista</td>
+                                <td style="padding:6px">6.0</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="7" style="padding:6px">PowerShell 1.0</td>
+                                <td rowspan="7" style="padding:6px">November 2006</td>
+                                <td rowspan="7" style="padding:6px">Windows Server 2008<sup>3</sup></td>
+                                <td rowspan="7" style="padding:6px">6.0</td>
+                                <td style="padding:6px">Windows XP SP2</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px">Windows XP SP3</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px">Windows Vista</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px">Windows Vista SP2</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px">Windows Server 2003 SP1</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px">Windows Server 2003 SP2</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px">Windows Server 2003 R2</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="6" style="padding:6px">PowerShell 2.0</td>
+                                <td rowspan="6" style="padding:6px">October 2009</td>
+                                <td rowspan="3" style="padding:6px">Windows 7</td>
+                                <td rowspan="3" style="padding:6px">6.1</td>
+                                <td style="padding:6px">Windows XP SP3</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px">Windows Vista SP1</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px">Windows Vista SP2</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3" style="padding:6px">Windows Server 2008 R2<sup>4</sup></td>
+                                <td rowspan="3" style="padding:6px">6.1</td>
+                                <td style="padding:6px">Windows Server 2003 SP2</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px">Windows Server 2008 SP1</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px">Windows Server 2008 SP2</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3" style="padding:6px">PowerShell 3.0</td>
+                                <td rowspan="3" style="padding:6px">September 2012</td>
+                                <td style="padding:6px">Windows 8</td>
+                                <td style="padding:6px">6.2</td>
+                                <td style="padding:6px">Windows 7 SP1</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2" style="padding:6px">Windows Server 2012</td>
+                                <td rowspan="2" style="padding:6px">6.2</td>
+                                <td style="padding:6px">Windows Server 2008 SP2</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px">Windows Server 2008 R2 SP1</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3" style="padding:6px">PowerShell 4.0</td>
+                                <td rowspan="3" style="padding:6px">October 2013</td>
+                                <td style="padding:6px">Windows 8.1</td>
+                                <td style="padding:6px">6.3</td>
+                                <td style="padding:6px">Windows 7 SP1</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2" style="padding:6px">Windows Server 2012 R2</td>
+                                <td rowspan="2" style="padding:6px">6.3</td>
+                                <td style="padding:6px">Windows Server 2008 R2 SP1</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px">Windows Server 2012</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2" style="padding:6px">PowerShell 5.0</td>
+                                <td rowspan="2" style="padding:6px">April 2014<sup>5</sup></td>
+                                <td rowspan="2" style="padding:6px">Windows 10</td>
+                                <td rowspan="2" style="padding:6px">10.0</td>
+                                <td style="padding:6px">Windows 8.1</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px">Windows Server 2012 R2</td>
+                            </tr>
+                        </table>
+                        <p><sup>1</sup> <code>$PSVersionTable.PSVersion</code>
+                        <br /><sup>2</sup> <code>[System.Environment]::OSVersion.Version</code> (requires .NET Framework 1.1 or later, format: Major.Minor)
+                        <br /><sup>3</sup> Has to be installed through Server Manager
+                        <br /><sup>4</sup> Also integrated in all later Windows versions
+                        <br /><sup>5</sup> Release date of public review
+                        <br /><sup>6</sup> Platform ID = 0
+                        <br /><sup>7</sup> Platform ID = 1 (whereas on NT 3.51 and later the Platform ID ≥ 2)</p>
+                        <p>Sources: <a href="https://4sysops.com/archives/powershell-versions-and-their-windows-version/">PowerShell versions and their Windows version</a>, <a href="http://www.vb-helper.com/howto_net_os_version.html">Get operating system information in VB .NET</a> and <a href="https://social.msdn.microsoft.com/Forums/vstudio/en-US/5956c04f-072a-406c-ae6a-cc8b3a207936/systemenvironmentosversionversionmajor?forum=csharpgeneral">System.Environment.OSVersion.Version.Major</a></p>
+                    </ol></li>
+                </p>
+                <p>
+                    <li>Please note that this script will try to check whether it is run in an elevated PowerShell window (run as an administrator) or not when executed on a Windows 8 or a Windows Server 2012 machine or later.</li>
                 </p>
                 <p>
                     <li>Please note that the CSV-file is created in a directory, which is specified with the <code>$path</code> variable (at line 6). The <code>$env:temp</code> variable points to the current temp folder. The default value of the <code>$env:temp</code> variable is <code>C:\Users\&lt;username&gt;\AppData\Local\Temp</code> (i.e. each user account has their own separate temp folder at path <code>%USERPROFILE%\AppData\Local\Temp</code>). To see the current temp path, for instance a command
@@ -207,7 +388,7 @@
                 </p>
                 <p>
                     <li><p><code>Set-ExecutionPolicy remotesigned</code><br />
-                    This command is altering the Windows PowerShell rights to enable script execution. Windows PowerShell has to be run with elevated rights (run as an administrator) to actually be able to change the script execution properties. The default value is "<code>Set-ExecutionPolicy restricted</code>".</p>
+                    This command is altering the Windows PowerShell rights to enable script execution for the default (LocalMachine) scope. Windows PowerShell has to be run with elevated rights (run as an administrator) to actually be able to change the script execution properties. The default value of the default (LocalMachine) scope is "<code>Set-ExecutionPolicy restricted</code>".</p>
                         <p>Parameters:
                                 <ol>
                                     <table>
@@ -238,13 +419,16 @@
                                     </table>
                                 </ol>
                         </p>
-                    <p>For more information, please type "<code>help Set-ExecutionPolicy -Full</code>" or visit <a href="https://technet.microsoft.com/en-us/library/hh849812.aspx">Set-ExecutionPolicy</a>.</p>
+                    <p>For more information, please type "<code>Get-ExecutionPolicy -List</code>", "<code>help Set-ExecutionPolicy -Full</code>", "<code>help about_Execution_Policies</code>" or visit <a href="https://technet.microsoft.com/en-us/library/hh849812.aspx">Set-ExecutionPolicy</a> or <a href="http://go.microsoft.com/fwlink/?LinkID=135170.">about_Execution_Policies</a>.</p>
                     </li>
                 </p>
                 <p>
                     <li><code>New-Item -ItemType File -Path C:\Temp\Get-InstalledPrograms.ps1</code><br />
-                    Creates an empty ps1-file to the <code>C:\Temp</code> directory. The <code>New-Item</code> cmdlet has an inherent <code>-NoClobber</code> mode built into it, so that the procedure will halt, if overwriting (replacing the contents) of an existing file is about to happen. Overwriting a file with the <code>New-Item</code> cmdlet requires using the <code>Force</code>.<br />
-                    For more information, please type "<code>help New-Item -Full</code>".</li>
+                    Creates an empty ps1-file to the <code>C:\Temp</code> directory. The <code>New-Item</code> cmdlet has an inherent <code>-NoClobber</code> mode built into it, so that the procedure will halt, if overwriting (replacing the contents) of an existing file is about to happen. Overwriting a file with the <code>New-Item</code> cmdlet requires using the <code>Force</code>. If the path name includes space characters, please enclose the path name in quotation marks (single or double):
+                        <ol>
+                            <br /><code>New-Item -ItemType File -Path "C:\Folder Name\Get-InstalledPrograms.ps1"</code>
+                        </ol>
+                    <br />For more information, please type "<code>help New-Item -Full</code>".</li>
                 </p>
             </ol>
         </td>
@@ -298,6 +482,18 @@
     <tr>
         <td style="padding:6px"><a href="https://msdn.microsoft.com/en-us/library/aa393941(v=vs.85).aspx">Uninstall method of the Win32_Product class</a></td>
     </tr>
+    <tr>
+        <td style="padding:6px"><a href="http://stackoverflow.com/questions/29266622/how-to-run-exe-with-without-elevated-privileges-from-powershell?rq=1">How to run exe with/without elevated privileges from PowerShell</a></td>
+    </tr>
+    <tr>
+        <td style="padding:6px"><a href="https://4sysops.com/archives/powershell-versions-and-their-windows-version/">PowerShell versions and their Windows version</a></td>
+    </tr>
+    <tr>
+        <td style="padding:6px"><a href="http://www.vb-helper.com/howto_net_os_version.html">Get operating system information in VB .NET</a></td>
+    </tr>
+    <tr>
+        <td style="padding:6px"><a href="https://social.msdn.microsoft.com/Forums/vstudio/en-US/5956c04f-072a-406c-ae6a-cc8b3a207936/systemenvironmentosversionversionmajor?forum=csharpgeneral">System.Environment.OSVersion.Version.Major</a></td>
+    </tr>
 </table>
 
 
@@ -311,7 +507,7 @@
         <td style="padding:6px"><a href="https://github.com/auberginehill/firefox-customization-files">Firefox Customization Files</a></td>
     </tr>
     <tr>
-        <th rowspan="14"></th>
+        <th rowspan="16"></th>
         <td style="padding:6px"><a href="https://github.com/auberginehill/get-ascii-table">Get-AsciiTable</a></td>
     </tr>
     <tr>
@@ -319,6 +515,9 @@
     </tr>
     <tr>
         <td style="padding:6px"><a href="https://github.com/auberginehill/get-computer-info">Get-ComputerInfo</a></td>
+    </tr>
+    <tr>
+        <td style="padding:6px"><a href="https://github.com/auberginehill/get-culture-tables">Get-CultureTables</a></td>
     </tr>
     <tr>
         <td style="padding:6px"><a href="https://github.com/auberginehill/get-directory-size">Get-DirectorySize</a></td>
@@ -352,5 +551,8 @@
     </tr>
     <tr>
         <td style="padding:6px"><a href="https://github.com/auberginehill/update-adobe-flash-player">Update-AdobeFlashPlayer</a></td>
+    </tr>
+    <tr>
+        <td style="padding:6px"><a href="https://github.com/auberginehill/update-mozilla-firefox">Update-MozillaFirefox</a></td>
     </tr>
 </table>
