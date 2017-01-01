@@ -254,6 +254,21 @@ $empty_line | Out-String
 
 <#
 
+   ____        _   _
+  / __ \      | | (_)
+ | |  | |_ __ | |_ _  ___  _ __  ___
+ | |  | | '_ \| __| |/ _ \| '_ \/ __|
+ | |__| | |_) | |_| | (_) | | | \__ \
+  \____/| .__/ \__|_|\___/|_| |_|___/
+        | |
+        |_|
+
+
+# Open the Programs and Features location
+# Source: http://winaero.com/blog/the-most-comprehensive-list-of-shell-locations-in-windows-8/
+Start-Process explorer.exe "shell:::{7b81be6a-ce2b-4676-a29e-eb907a5126c5}"
+
+
    _____
   / ____|
  | (___   ___  _   _ _ __ ___ ___
@@ -486,13 +501,13 @@ For more information, please type "Get-ExecutionPolicy -List", "help Set-Executi
 or http://go.microsoft.com/fwlink/?LinkID=135170.
 
 .EXAMPLE
-New-Item -ItemType File -Path C:\Temp\Get-CultureTables.ps1
+New-Item -ItemType File -Path C:\Temp\Get-InstalledPrograms.ps1
 Creates an empty ps1-file to the C:\Temp directory. The New-Item cmdlet has an inherent -NoClobber mode
 built into it, so that the procedure will halt, if overwriting (replacing the contents) of an existing
 file is about to happen. Overwriting a file with the New-Item cmdlet requires using the Force. If the
 path name includes space characters, please enclose the path name in quotation marks (single or double):
 
-    New-Item -ItemType File -Path "C:\Folder Name\Get-CultureTables.ps1"
+    New-Item -ItemType File -Path "C:\Folder Name\Get-InstalledPrograms.ps1"
 
 For more information, please type "help New-Item -Full".
 
