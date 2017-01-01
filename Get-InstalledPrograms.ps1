@@ -316,10 +316,11 @@ NoModify, NoRepair, Partner Code, PSChildName, PSDrive, PSProvider, Uninstall St
 URL Info (About), URL Update Info, Version (Real), Version Major, Version Minor and
 Windows Installer are displayed in console, written to a CSV-file and displayed in a
 pop-up window (Out-Gridview). On Windows 8 / Windows Server 2012 machines (and later)
-also the installed Windows Store apps are enumerated in a separate CSV-file and
-displayed in a pop-up window (Out-Gridview); If Get-InstalledPrograms is run in an
-elevated PowerShell window, the Apps that are installed under other than the current
-user profile are detected, too.
+also the installed Windows Store apps are enumerated with the Get-AppxPackage cmdlet(,
+which requires PowerShell 3.0 or later) in a separate CSV-file and displayed in a 
+pop-up window (Out-Gridview); If Get-InstalledPrograms is run in an elevated 
+PowerShell window, the Apps that are installed under other than the current user 
+profile are detected, too.
 
 The enumeration of installed programs in a Windows machine may take some time
 - therefore a progress bar is included in Get-InstalledPrograms for monitoring the
