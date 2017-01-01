@@ -411,9 +411,9 @@ a combination of various registry queries is used instead.
                                                                         Windows Vista
                                                                         Windows Vista SP2
     PowerShell 2.0  October 2009    Windows 7                   6.1     Windows XP SP3
-                                    Windows Server 2008 R2 (4)  6.1     Windows Server 2003 SP2
                                                                         Windows Vista SP1
                                                                         Windows Vista SP2
+                                    Windows Server 2008 R2 (4)  6.1     Windows Server 2003 SP2
                                                                         Windows Server 2008 SP1
                                                                         Windows Server 2008 SP2
     PowerShell 3.0  September 2012  Windows 8                   6.2     Windows 7 SP1
