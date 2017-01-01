@@ -40,7 +40,7 @@
       <br />
       <br /><code>Check-InstalledSoftware "Adobe Flash Player 23 NPAPI" 23.0.0.162</code>
       <br />
-      <br />will return all the aforementioned info on the queried program, if it is installed, but returs a null value, if such a program doesn't exist on the machine.</td>
+      <br />will return all the aforementioned info on the queried program, if it is installed, but returns a null value, if such a program doesn't exist on the machine.</td>
    </tr>
    <tr>
       <td style="padding:6px"><strong>Homepage:</strong></td>
