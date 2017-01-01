@@ -391,7 +391,7 @@ a combination of various registry queries is used instead.
 
                                                                         This PowerShell is
     PowerShell      Release Date          Default on Windows            also available on
-    version (1)                     Version              OSVersion (2)  Windows Version(s)
+    version (1)                     Version (8)          OSVersion (2)  Windows Version(s)
 
                                     Win3.1 (6)                  ?.?
                                     Win95 (7)                   4.0
@@ -433,6 +433,7 @@ a combination of various registry queries is used instead.
     (5) Release date of public review
     (6) Platform ID = 0
     (7) Platform ID = 1 (whereas on NT 3.51 and later the Platform ID >/= 2)
+    (8) (Get-WmiObject -Class Win32_OperatingSystem).Caption
 
     # Source: https://4sysops.com/archives/powershell-versions-and-their-windows-version/
     # Source: http://www.vb-helper.com/howto_net_os_version.html
