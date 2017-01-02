@@ -427,7 +427,9 @@ a combination of various registry queries is used instead.
                                                                         Windows Server 2012 R2
 
     (1) $PSVersionTable.PSVersion
-    (2) [System.Environment]::OSVersion.Version (requires .NET Framework 1.1 or later, format: Major.Minor)
+    (2) [System.Environment]::OSVersion.Version (format: Major.Minor - requires 
+        .NET Framework 1.1 or later; To find out the .NET Framework version with PowerShell, 
+        a command $PSVersionTable.CLRVersion could be used). 
     (3) Has to be installed through Server Manager
     (4) Also integrated in all later Windows versions
     (5) Release date of public review
@@ -438,6 +440,7 @@ a combination of various registry queries is used instead.
     # Source: https://4sysops.com/archives/powershell-versions-and-their-windows-version/
     # Source: http://www.vb-helper.com/howto_net_os_version.html
     # Source: https://social.msdn.microsoft.com/Forums/vstudio/en-US/5956c04f-072a-406c-ae6a-cc8b3a207936/systemenvironmentosversionversionmajor?forum=csharpgeneral
+    # Source: http://windowsitpro.com/powershell/q-find-your-net-framework-versions
 
 
 Please note that this script will try to check whether it is run in an elevated
