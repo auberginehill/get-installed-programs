@@ -332,7 +332,7 @@
                             </tr>
                         </table>
                         <p><sup>1</sup> <code>$PSVersionTable.PSVersion</code>
-                        <br /><sup>2</sup> <code>[System.Environment]::OSVersion.Version</code> (requires .NET Framework 1.1 or later, format: Major.Minor)
+                        <br /><sup>2</sup> <code>[System.Environment]::OSVersion.Version</code> (format: Major.Minor – requires .NET Framework 1.1 or later; To find out the .NET Framework version with PowerShell, a command <code>$PSVersionTable.CLRVersion</code> could be used).
                         <br /><sup>3</sup> Has to be installed through Server Manager
                         <br /><sup>4</sup> Also integrated in all later Windows versions
                         <br /><sup>5</sup> Release date of public review
@@ -508,7 +508,7 @@
         <td style="padding:6px"><a href="https://github.com/auberginehill/firefox-customization-files">Firefox Customization Files</a></td>
     </tr>
     <tr>
-        <th rowspan="16"></th>
+        <th rowspan="19"></th>
         <td style="padding:6px"><a href="https://github.com/auberginehill/get-ascii-table">Get-AsciiTable</a></td>
     </tr>
     <tr>
@@ -527,6 +527,12 @@
         <td style="padding:6px"><a href="https://github.com/auberginehill/get-installed-windows-updates">Get-InstalledWindowsUpdates</a></td>
     </tr>
     <tr>
+        <td style="padding:6px"><a href="https://github.com/auberginehill/get-powershell-aliases-table">Get-PowerShellAliasesTable</a></td>
+    </tr>
+    <tr>
+        <td style="padding:6px"><a href="https://gist.github.com/auberginehill/9c2f26146a0c9d3d1f30ef0395b6e6f5">Get-PowerShellSpecialFolders</a></td>
+    </tr>
+    <tr>
         <td style="padding:6px"><a href="https://github.com/auberginehill/get-ram-info">Get-RAMInfo</a></td>
     </tr>
     <tr>
@@ -543,6 +549,9 @@
     </tr>
     <tr>
         <td style="padding:6px"><a href="https://github.com/auberginehill/java-update">Java-Update</a></td>
+    </tr>
+    <tr>
+        <td style="padding:6px"><a href="https://gist.github.com/auberginehill/176774de38ebb3234b633c5fbc6f9e41">Rename-Files</a></td>
     </tr>
     <tr>
         <td style="padding:6px"><a href="https://github.com/auberginehill/rock-paper-scissors">Rock-Paper-Scissors</a></td>
