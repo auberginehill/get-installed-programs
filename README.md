@@ -222,23 +222,27 @@
                                 <td style="padding:6px">4.0</td>
                             </tr>
                             <tr>
-                                <td style="padding:6px">Win2000</td>
+                                <td style="padding:6px">Windows 2000</td>
                                 <td style="padding:6px">5.0</td>
                             </tr>
                             <tr>
-                                <td style="padding:6px">WinXP</td>
+                                <td style="padding:6px">Windows XP</td>
                                 <td style="padding:6px">5.1</td>
                             </tr>
                             <tr>
-                                <td style="padding:6px">WinXP 64-bit</td>
+                                <td style="padding:6px">Windows XP 64-Bit Edition</td>
                                 <td style="padding:6px">5.2</td>
                             </tr>
                             <tr>
-                                <td style="padding:6px">Win2003</td>
+                                <td style="padding:6px">Windows Server 2003</td>
                                 <td style="padding:6px">5.2</td>
                             </tr>
                             <tr>
-                                <td style="padding:6px">Vista</td>
+                                <td style="padding:6px">Windows Server 2003 R2</td>
+                                <td style="padding:6px">5.2</td>
+                            </tr>                            
+                            <tr>
+                                <td style="padding:6px">Windows Vista</td>
                                 <td style="padding:6px">6.0</td>
                             </tr>
                             <tr>
@@ -339,7 +343,7 @@
                         <br /><sup>6</sup> Platform ID = 0
                         <br /><sup>7</sup> Platform ID = 1 (whereas on NT 3.51 and later the Platform ID ≥ 2)
                         <br /><sup>8</sup> <code>(Get-WmiObject -Class Win32_OperatingSystem).Caption</code></p>
-                        <p>Sources: <a href="https://4sysops.com/archives/powershell-versions-and-their-windows-version/">PowerShell versions and their Windows version</a>, <a href="http://www.vb-helper.com/howto_net_os_version.html">Get operating system information in VB .NET</a> and <a href="https://social.msdn.microsoft.com/Forums/vstudio/en-US/5956c04f-072a-406c-ae6a-cc8b3a207936/systemenvironmentosversionversionmajor?forum=csharpgeneral">System.Environment.OSVersion.Version.Major</a></p>
+                        <p>Sources: <a href="https://4sysops.com/archives/powershell-versions-and-their-windows-version/">PowerShell versions and their Windows version</a>, <a href="http://www.vb-helper.com/howto_net_os_version.html">Get operating system information in VB .NET</a>, <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms724832(v=vs.85).aspx">Operating System Version</a> and <a href="https://social.msdn.microsoft.com/Forums/vstudio/en-US/5956c04f-072a-406c-ae6a-cc8b3a207936/systemenvironmentosversionversionmajor?forum=csharpgeneral">System.Environment.OSVersion.Version.Major</a></p>
                     </ol></li>
                 </p>
                 <p>
