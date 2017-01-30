@@ -399,11 +399,12 @@ a combination of various registry queries is used instead.
                                     WinME (7)                   4.90
                                     NT 3.51                     3.51
                                     NT 4.0                      4.0
-                                    Win2000                     5.0
-                                    WinXP                       5.1
-                                    WinXP 64-bit                5.2
-                                    Win2003                     5.2
-                                    Vista                       6.0
+                                    Windows 2000                5.0
+                                    Windows XP                  5.1
+                                    Windows XP 64-Bit Edition   5.2
+                                    Windows Server 2003         5.2
+                                    Windows Server 2003 R2      5.2
+                                    Windows Vista               6.0
     PowerShell 1.0  November 2006   Windows Server 2008 (3)     6.0     Windows XP SP2
                                                                         Windows XP SP3
                                                                         Windows Server 2003 SP1
@@ -423,7 +424,10 @@ a combination of various registry queries is used instead.
     PowerShell 4.0  October 2013    Windows 8.1                 6.3     Windows 7 SP1
                                     Windows Server 2012 R2      6.3     Windows Server 2008 R2 SP1
                                                                         Windows Server 2012
-    PowerShell 5.0  April 2014 (5)  Windows 10                  10.0    Windows 8.1
+    PowerShell 5.0  April 2014 (5)  Windows 10                  10.0    Windows 7 SP1 (9)
+                                                                        Windows 8.1
+                                    Windows Server 2016         10.0    Windows Server 2008 R2 (9)
+                                                                        Windows Server 2012
                                                                         Windows Server 2012 R2
 
     (1) $PSVersionTable.PSVersion
@@ -436,9 +440,12 @@ a combination of various registry queries is used instead.
     (6) Platform ID = 0
     (7) Platform ID = 1 (whereas on NT 3.51 and later the Platform ID >/= 2)
     (8) (Get-WmiObject -Class Win32_OperatingSystem).Caption
+    (9) Requires .NET Framework 4.5
 
     # Source: https://4sysops.com/archives/powershell-versions-and-their-windows-version/
     # Source: http://www.vb-helper.com/howto_net_os_version.html
+    # Source: https://msdn.microsoft.com/en-us/library/windows/desktop/ms724832(v=vs.85).aspx
+    # Source: https://msdn.microsoft.com/en-us/powershell/wmf/5.1/install-configure
     # Source: https://social.msdn.microsoft.com/Forums/vstudio/en-US/5956c04f-072a-406c-ae6a-cc8b3a207936/systemenvironmentosversionversionmajor?forum=csharpgeneral
     # Source: http://windowsitpro.com/powershell/q-find-your-net-framework-versions
 
