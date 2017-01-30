@@ -327,11 +327,13 @@
                             <tr>
                                 <td rowspan="2" style="padding:6px">PowerShell 5.0</td>
                                 <td rowspan="2" style="padding:6px">April 2014<sup>5</sup></td>
-                                <td rowspan="2" style="padding:6px">Windows 10</td>
-                                <td rowspan="2" style="padding:6px">10.0</td>
+                                <td style="padding:6px">Windows 10</td>
+                                <td style="padding:6px">10.0</td>
                                 <td style="padding:6px">Windows 8.1</td>
                             </tr>
                             <tr>
+                                <td style="padding:6px">Windows Server 2016</td> 
+                                <td style="padding:6px">10.0</td>
                                 <td style="padding:6px">Windows Server 2012 R2</td>
                             </tr>
                         </table>
