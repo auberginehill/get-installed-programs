@@ -195,11 +195,11 @@
                                 <th style="padding:6px">OSVersion<sup>2</sup></th>
                             </tr>
                             <tr>
-                                <td rowspan="11"></td>
-                                <td rowspan="11"></td>
+                                <td rowspan="12"></td>
+                                <td rowspan="12"></td>
                                 <td style="padding:6px">Win3.1<sup>6</sup></td>
                                 <td style="padding:6px">?.?</td>
-                                <td rowspan="11"></td>
+                                <td rowspan="12"></td>
                             </tr>
                             <tr>
                                 <td style="padding:6px">Win95<sup>7</sup></td>
