@@ -325,16 +325,25 @@
                                 <td style="padding:6px">Windows Server 2012</td>
                             </tr>
                             <tr>
-                                <td rowspan="2" style="padding:6px">PowerShell 5.0</td>
-                                <td rowspan="2" style="padding:6px">April 2014<sup>5</sup></td>
-                                <td style="padding:6px">Windows 10</td>
-                                <td style="padding:6px">10.0</td>
-                                <td style="padding:6px">Windows 8.1</td>
+                                <td rowspan="5" style="padding:6px">PowerShell 5.0</td>
+                                <td rowspan="5" style="padding:6px">April 2014<sup>5</sup></td>
+                                <td rowspan="2" style="padding:6px">Windows 10</td>
+                                <td rowspan="2" style="padding:6px">10.0</td>
+                                <td style="padding:6px">Windows 7 SP1<sup>9</sup></td>
                             </tr>
                             <tr>
-                                <td style="padding:6px">Windows Server 2016</td> 
-                                <td style="padding:6px">10.0</td>
-                                <td style="padding:6px">Windows Server 2012 R2</td>
+                                <td style="padding:6px">Windows 8.1</td> 
+                            </tr>
+                            <tr>
+                                <td rowspan="3" style="padding:6px">Windows Server 2016</td> 
+                                <td rowspan="3" style="padding:6px">10.0</td>
+                                <td style="padding:6px">Windows Server 2008 R2<sup>9</sup></td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px">Windows Server 2012</td> 
+                            </tr>
+                            <tr>
+                                <td style="padding:6px">Windows Server 2012 R2</td> 
                             </tr>
                         </table>
                         <p><sup>1</sup> <code>$PSVersionTable.PSVersion</code>
@@ -345,7 +354,8 @@
                         <br /><sup>6</sup> Platform ID = 0
                         <br /><sup>7</sup> Platform ID = 1 (whereas on NT 3.51 and later the Platform ID ≥ 2)
                         <br /><sup>8</sup> <code>(Get-WmiObject -Class Win32_OperatingSystem).Caption</code></p>
-                        <p>Sources: <a href="https://4sysops.com/archives/powershell-versions-and-their-windows-version/">PowerShell versions and their Windows version</a>, <a href="http://www.vb-helper.com/howto_net_os_version.html">Get operating system information in VB .NET</a>, <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms724832(v=vs.85).aspx">Operating System Version</a> and <a href="https://social.msdn.microsoft.com/Forums/vstudio/en-US/5956c04f-072a-406c-ae6a-cc8b3a207936/systemenvironmentosversionversionmajor?forum=csharpgeneral">System.Environment.OSVersion.Version.Major</a></p>
+                        <br /><sup>9</sup> Prerequisite: .NET Framework 4.5
+                        <p>Sources: <a href="https://4sysops.com/archives/powershell-versions-and-their-windows-version/">PowerShell versions and their Windows version</a>, <a href="http://www.vb-helper.com/howto_net_os_version.html">Get operating system information in VB .NET</a>, <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms724832(v=vs.85).aspx">Operating System Version</a>, <a href="https://msdn.microsoft.com/en-us/powershell/wmf/5.1/install-configure">Install and Configure WMF 5.1</a> and <a href="https://social.msdn.microsoft.com/Forums/vstudio/en-US/5956c04f-072a-406c-ae6a-cc8b3a207936/systemenvironmentosversionversionmajor?forum=csharpgeneral">System.Environment.OSVersion.Version.Major</a></p>
                     </ol></li>
                 </p>
                 <p>
